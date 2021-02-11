@@ -3,14 +3,14 @@ package com.codeup.springblog.models;
 import javax.persistence.*;
 
 @Entity
-@Table (name = "dogs")
+@Table (name = "dogs",  uniqueConstraints= @UniqueConstraint(columnNames={"name", "reside_state"}))
 public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column (nullable = false, length = 3)
+    @Column (nullable = false)
     private int age;
 
     @Column (nullable = false)
