@@ -8,6 +8,7 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private long id;
 
     @Column (nullable = false)
@@ -16,7 +17,7 @@ public class Dog {
     @Column (nullable = false)
     private String name;
 
-    @Column (nullable = false, name = "reside_state", length = 2)
+    @Column (nullable = false, columnDefinition = "char(2)")
     private String resideState;
 
     public Dog(){}
