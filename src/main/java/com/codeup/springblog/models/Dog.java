@@ -17,7 +17,7 @@ public class Dog {
     @Column (nullable = false)
     private String name;
 
-    @Column (nullable = false, columnDefinition = "char(2)")
+    @Column (nullable = false, name = "reside_state", columnDefinition = "char(2)")
     private String resideState;
 
     public Dog(){}
