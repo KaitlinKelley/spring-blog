@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "posts")
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT(11) UNSIGNED")
@@ -16,12 +17,17 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @ManyToOne
+    @JoinColumn (name = "user_id")
+    private User user;
+
     public Post(){}
 
-    public Post(String title, String body, long id) {
+    public Post(String title, String body, long id, User user) {
         this.title = title;
         this.body = body;
         this.id = id;
+        this.user = user;
     }
 
     public String getTitle() {
@@ -46,5 +52,17 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -1,6 +1,8 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
+import com.codeup.springblog.repositories.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +16,18 @@ import java.util.List;
 @Controller
 public class PostController {
 
+    private final UserRepository userDao;
+
+    public PostController(UserRepository userDao){
+        this.userDao = userDao;
+    }
+
     @GetMapping("/posts")
     public String postsIndex(Model model){
 
-        Post post1 = new Post("First Post", "Here is the first post", 1);
-        Post post2 = new Post("Second Post", "Here is the second post", 2);
-        Post post3 = new Post("Third Post", "Here is the third post", 3);
+        Post post1 = new Post("First Post", "Here is the first post", 1, userDao.getOne(1L));
+        Post post2 = new Post("Second Post", "Here is the second post", 2, userDao.getOne(1L));
+        Post post3 = new Post("Third Post", "Here is the third post", 3, userDao.getOne(1L));
 
         List<Post> postList = new ArrayList<>();
         postList.add(post1);
@@ -36,7 +44,7 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String postView(@PathVariable long id, Model model){
-        Post post = new Post("First Post", "Here is the first post.", 1);
+        Post post = new Post("First Post", "Here is the first post.", 1, userDao.getOne(1L));
         model.addAttribute("title", "Single Post");
         model.addAttribute("post", post);
         model.addAttribute("id", id);
