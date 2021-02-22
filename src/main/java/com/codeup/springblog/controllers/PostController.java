@@ -16,27 +16,30 @@ public class PostController {
 
     @GetMapping("/posts")
     public String postsIndex(Model model){
-        Post post1 = new Post("First Post", "This is my first post", 1);
-        Post post2 = new Post("Second Post", "This is my 2nd post", 2);
-        Post post3 = new Post("Third Post", "This is my 3rd post", 3);
+
+        Post post1 = new Post("First Post", "Here is the first post", 1);
+        Post post2 = new Post("Second Post", "Here is the second post", 2);
+        Post post3 = new Post("Third Post", "Here is the third post", 3);
 
         List<Post> postList = new ArrayList<>();
         postList.add(post1);
         postList.add(post2);
         postList.add(post3);
 
+
         model.addAttribute("title", "All Posts");
         model.addAttribute("posts", postList);
+
 
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    public String postView(Model model){
-//        get single post by id later
-        Post post = new Post("First Post", "This is my first post", 1);
-        model.addAttribute("title", "Single Posts");
+    public String postView(@PathVariable long id, Model model){
+        Post post = new Post("First Post", "Here is the first post.", 1);
+        model.addAttribute("title", "Single Post");
         model.addAttribute("post", post);
+        model.addAttribute("id", id);
         return "posts/show";
     }
 
