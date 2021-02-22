@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "INT(11) UNSIGNED")
     private long id;
 
     @Column(nullable = false, length = 100)
