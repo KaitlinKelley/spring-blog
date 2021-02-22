@@ -1,11 +1,23 @@
 package com.codeup.springblog.models;
 
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "posts")
 public class Post {
 
+<<<<<<< HEAD
+=======
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+public class Post {
+
+
+>>>>>>> f0e2ac6ff183b1be2232a202dc96b15974b2748f
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "INT(11) UNSIGNED")
