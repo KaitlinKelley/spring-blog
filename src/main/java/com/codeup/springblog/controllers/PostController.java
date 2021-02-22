@@ -2,6 +2,7 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
 
+import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
 
 import org.springframework.stereotype.Controller;
@@ -17,9 +18,12 @@ import java.util.List;
 @Controller
 public class PostController {
 
+    private final PostRepository postDao;
     private final UserRepository userDao;
 
-    public PostController(UserRepository userDao) {
+
+    public PostController(PostRepository postDao, UserRepository userDao) {
+        this.postDao = postDao;
         this.userDao = userDao;
     }
 
