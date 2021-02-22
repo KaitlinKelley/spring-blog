@@ -1,12 +1,9 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
-<<<<<<< HEAD
-import com.codeup.springblog.models.User;
+
 import com.codeup.springblog.repositories.UserRepository;
-=======
-import com.codeup.springblog.repositories.PostRepository;
->>>>>>> f0e2ac6ff183b1be2232a202dc96b15974b2748f
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,17 +17,10 @@ import java.util.List;
 @Controller
 public class PostController {
 
-<<<<<<< HEAD
     private final UserRepository userDao;
 
-    public PostController(UserRepository userDao){
+    public PostController(UserRepository userDao) {
         this.userDao = userDao;
-=======
-    private final PostRepository postDao;
-
-    public PostController(PostRepository postDao){
-        this.postDao = postDao;
->>>>>>> f0e2ac6ff183b1be2232a202dc96b15974b2748f
     }
 
     @GetMapping("/posts")
@@ -45,10 +35,8 @@ public class PostController {
         postList.add(post2);
         postList.add(post3);
 
-
         model.addAttribute("title", "All Posts");
         model.addAttribute("posts", postList);
-
 
         return "posts/index";
     }
