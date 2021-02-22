@@ -1,11 +1,19 @@
 package com.codeup.springblog.models;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "posts")
+public class Post {
+
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 public class Post {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
