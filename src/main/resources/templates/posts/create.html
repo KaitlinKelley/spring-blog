@@ -8,6 +8,15 @@
         <h1>Create Post</h1>
 
         <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+                <label for="body" class="form-label">Body</label>
+                <textarea class="form-control" id="body" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
 
 
         </form>
