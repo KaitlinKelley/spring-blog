@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="partials/head :: header-links"></head>
+<body>
+    <nav th:replace="partials/navbar :: navbar"></nav>
+
+    <div class="container">
+        <h1>Create Post</h1>
+
+        <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+
+
+        </form>
+
+    </div>
+</body>
+</html>

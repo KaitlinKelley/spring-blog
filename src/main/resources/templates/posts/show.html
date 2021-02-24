@@ -7,7 +7,7 @@
 <h1>Here is a single post!</h1>
 <h2 th:text="${post.title}"></h2>
 <p th:text="${post.body}"></p>
-<p>Created by: <span th:text="${post.user.getEmail}"></span></p>
+<p>Created by: <span th:text="${post.user.email}"></span></p>
 
 <div th:replace="partials/scripts :: assets"></div>
 </body>
