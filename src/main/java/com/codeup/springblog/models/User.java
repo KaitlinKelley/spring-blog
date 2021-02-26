@@ -11,13 +11,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique=true)
     private String username;
 
     @Column(nullable = false, length = 50)
     private String email;
 
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false)
     private String password;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
@@ -30,7 +30,7 @@ public class User {
         this.id = copy.id;
         this.username = copy.username;
         this.email = copy.email;
-        this.password = copy.username;
+        this.password = copy.password;
     }
 
     public User(long id, String username, String email, String password){

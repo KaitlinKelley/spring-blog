@@ -16,6 +16,6 @@ public class UserService {
 
     public User getLoggedInUser() {
         User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        return userDao.findById(loggedInUser.getId()).get();
+        return loggedInUser;
     }
 }

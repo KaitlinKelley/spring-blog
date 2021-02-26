@@ -60,14 +60,14 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @GetMapping("/posts/create")
+    @GetMapping("/create")
     @ResponseBody
     public String postForm(Model model){
         model.addAttribute("post", new Post());
         return "posts/create";
     }
 
-    @PostMapping("/posts/create")
+    @PostMapping("/create")
     public String createPost(@ModelAttribute Post post){
         // Will throw if no users in the db!
         // In the future, we will get the logged in user

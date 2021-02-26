@@ -28,23 +28,23 @@ public class HomeController {
     }
 
     //Post Mapping for login is handled by Spring Security
-    @GetMapping("/posts/login")
+    @GetMapping("/login")
     public String showLoginForm(){
-        return "login";
+        return "/posts/login";
     }
 
-    @GetMapping("/posts/signup")
+    @GetMapping("/signup")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());
-        return "signup";
+        return "/posts/signup";
     }
 
-    @PostMapping("/posts/signup")
+    @PostMapping("/signup")
     public String createUser(@ModelAttribute User user){
         String password = user.getPassword();
         String hash = encoder.encode(password);
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/posts/login";
+        return "redirect:/login";
     }
 }

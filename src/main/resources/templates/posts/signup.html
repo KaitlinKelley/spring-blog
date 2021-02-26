@@ -7,7 +7,7 @@
 <div class="container">
     <h1>Sign Up</h1>
 
-    <form th:action="@{/posts/signup}" th:method="POST" th:object="${user}">
+    <form th:action="@{/signup}" th:method="POST" th:object="${user}">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" th:field="*{username}">

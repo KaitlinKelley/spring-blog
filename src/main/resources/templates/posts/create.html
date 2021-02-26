@@ -7,7 +7,7 @@
     <div class="container">
         <h1>Create Post</h1>
 
-        <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+        <form th:action="@{/create}" th:method="POST" th:object="${post}">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control" id="title" th:field="*{title}">
@@ -17,8 +17,6 @@
                 <textarea class="form-control" id="body" rows="3" th:field="*{body}"></textarea>
             </div>
             <button class="btn btn-primary" type="submit">Submit</button>
-
-
         </form>
 
     </div>
