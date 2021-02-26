@@ -2,6 +2,7 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
 
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
 import com.codeup.springblog.repositories.UserRepository;
 
@@ -30,39 +31,36 @@ public class PostController {
     @GetMapping("/posts")
     public String postsIndex(Model model){
 
-        Post post1 = new Post("First Post", "Here is the first post", 1, userDao.getOne(1L));
-        Post post2 = new Post("Second Post", "Here is the second post", 2, userDao.getOne(1L));
-        Post post3 = new Post("Third Post", "Here is the third post", 3, userDao.getOne(1L));
+       model.addAttribute("posts", postDao.findAll());
 
-        List<Post> postList = new ArrayList<>();
-        postList.add(post1);
-        postList.add(post2);
-        postList.add(post3);
-
-        model.addAttribute("title", "All Posts");
-        model.addAttribute("posts", postList);
-
-        return "posts/index";
+       return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String postView(@PathVariable long id, Model model){
-        Post post = new Post("First Post", "Here is the first post.", 1, userDao.getOne(1L));
-        model.addAttribute("title", "Single Post");
+        Post post = postDao.getOne(id);
         model.addAttribute("post", post);
-        model.addAttribute("id", id);
         return "posts/show";
     }
 
     @GetMapping("/posts/create")
     @ResponseBody
-    public String postForm(){
-        return "Create a post here!";
+    public String postForm(Model model){
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
     @ResponseBody
     public String createPost(){
-        return "Creating a new post...";
+        Post post = new Post();
+        post.setTitle(title);
+        post.setBody(body);
+
+        User user = userDao.findAll().get(0);
+        post.setUser(user);
+
+        postDao.save(post);
+        return "redirect:/posts/" + post.getId();
     }
 }
