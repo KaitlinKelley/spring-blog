@@ -29,9 +29,7 @@ public class PostController {
 
     @GetMapping("/posts")
     public String postsIndex(Model model){
-
        model.addAttribute("posts", postDao.findAll());
-
        return "posts/index";
     }
 
@@ -40,6 +38,26 @@ public class PostController {
         Post post = postDao.getOne(id);
         model.addAttribute("post", post);
         return "posts/show";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String viewEditPostForm(@PathVariable long id, Model model) {
+        model.addAttribute("post", postDao.getOne(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String updatePost(@PathVariable long id, @ModelAttribute Post post){
+        User user = userService.getLoggedInUser();
+        post.setUser(user);
+        postDao.save(post);
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id){
+        postDao.deleteById(id);
+        return "redirect:/posts";
     }
 
     @GetMapping("/posts/create")
