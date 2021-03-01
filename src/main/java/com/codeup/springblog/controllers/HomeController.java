@@ -23,13 +23,13 @@ public class HomeController {
 
     @GetMapping("/")
     public String landingPage(){
-        return "/posts/home";
+        return "posts/home";
     }
 
     //Post Mapping for login is handled by Spring Security
     @GetMapping("/login")
     public String showLoginForm(){
-        return "/posts/login";
+        return "posts/login";
     }
 
     @PostMapping("/login")
