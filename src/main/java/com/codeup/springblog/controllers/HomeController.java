@@ -22,9 +22,8 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    @ResponseBody
     public String landingPage(){
-        return "This is the landing page!";
+        return "/posts/home";
     }
 
     //Post Mapping for login is handled by Spring Security
