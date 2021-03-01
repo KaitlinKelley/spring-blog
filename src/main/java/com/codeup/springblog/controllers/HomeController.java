@@ -33,6 +33,11 @@ public class HomeController {
         return "/posts/login";
     }
 
+    @PostMapping("/login")
+    public String goToPosts(){
+        return "redirect:/posts";
+    }
+
     @GetMapping("/signup")
     public String showSignUpForm(Model model){
         model.addAttribute("user", new User());

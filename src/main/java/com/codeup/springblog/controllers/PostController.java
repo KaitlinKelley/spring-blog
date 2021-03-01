@@ -61,7 +61,6 @@ public class PostController {
     }
 
     @GetMapping("/create")
-    @ResponseBody
     public String postForm(Model model){
         model.addAttribute("post", new Post());
         return "posts/create";
