@@ -11,8 +11,7 @@
     <h2 th:text="${post.title}"></h2>
     <p th:text="${post.body}"></p>
     <p>Created by: <span th:text="${post.user.username}"></span></p>
-    <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-warning" tabindex="-1" role="button">Edit</a>
-    <a th:href="@{/posts/{id}/delete(id=${post.id})}" class="btn btn-danger" tabindex="-1" role="button">Delete</a>
+    <a th:href="@{/posts/{id}/edit(id=${post.id})}" class="btn btn-warning" tabindex="-1" role="button">Edit/Delete?</a>
 </div>
 
 
